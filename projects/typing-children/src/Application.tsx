@@ -9,11 +9,14 @@ import React from 'react';
  * React.ReactChildren;
  * React.ReactChild[];
  */
-type BoxProps = { children: React.ReactNode };
+type BoxProps = {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+};
 
-const Box = ({ children }: BoxProps) => {
+const Box = ({ children, style = {} }: BoxProps) => {
   return (
-    <section style={{ padding: '1em', border: '5px solid purple' }}>
+    <section style={{ padding: '1em', border: '5px solid purple', ...style }}>
       {children}
     </section>
   );
@@ -24,7 +27,7 @@ export default function Application() {
     <Box>
       Just a string.
       <p>Some HTML that is not nested.</p>
-      <Box>
+      <Box style={{ borderColor: 'red' }}>
         <h2>Another React component with one child.</h2>
       </Box>
       <Box>
