@@ -1,14 +1,10 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 
 const inc = (count: number) => count + 1;
 const dec = (count: number) => count - 1;
 
 const Counter = () => {
   const [count, setCount] = useState(0);
-
-  const changeCount = (event: ChangeEvent<HTMLInputElement>) => {
-    setCount(+event.target.value);
-  };
 
   return (
     <main className="Counter">
@@ -26,7 +22,9 @@ const Counter = () => {
             id="set-to"
             type="number"
             value={count}
-            onChange={changeCount}
+            onChange={(event) => {
+              setCount(+event.target.value);
+            }}
           />
           <input
             id="set-to"
